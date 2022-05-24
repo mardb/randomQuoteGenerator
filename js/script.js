@@ -34,7 +34,6 @@ let quotes = [
     quote:
       "There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.",
     source: "Gilbert Fowler",
-    citation: "",
     year: "1940",
   },
   {
@@ -44,35 +43,51 @@ let quotes = [
     citation: "The Family Circus newspaper cartoon",
     year: "1994",
   },
+  {
+    quote:"You cant unring a doorbell",
+    source: "Ancient Proverb",
+  },
 ];
 
 /***
  * `getRandomQuote` function
  ***/
 let getRandomQuote = () => {
-  // 1. Create a variable that generates a random number
-  // between zero and the last index in the `quotes` array
+  // generates a random number between zero and the last index in the `quotes` array
   let randomNumber = Math.floor(Math.random() * quotes.length);
-  console.log(randomNumber);
-  // 2. Use the random number variable and bracket notation
-  // to grab a random object from the `quotes` array, and
-  // store it in a variable
+  // grabs a random object from the `quotes` array
   let randomQuotes = quotes[randomNumber];
-  // 3. Return the variable storing the random quote object
+  // Return a random quote object
   return randomQuotes;
 };
-console.log(getRandomQuote());
+getRandomQuote();
 /***
  * `printQuote` function
  ***/
 
+function printQuote() {
+  // randomQuote calls the getRandomQuote() function and prints to the page. Depending on the quote properties, it will edit the text to show the quote in proper format.
+  const randomQuote = getRandomQuote(quotes)
+  //Instead of if statement, I used JS ternary operators to add to and format the HTML string
+  // if randomQuote has a 'citation' or 'year' property exists, it adds additional HTML and class names to the existing interpolation and a closed the statement with a '<p>' tag. 
+  const htmlString = `
+  <p class="quote">${randomQuote.quote}</p> 
+  <p class="source">${randomQuote.source} 
+  ${randomQuote.hasOwnProperty('citation') ? `<span class="citation">${randomQuote.citation}</span>` : ''  }
+  ${randomQuote.hasOwnProperty('year') ? ` <span class="year">${randomQuote.year}</span>` : ''  }
+  </p>
+  `
+  console.log(htmlString)
+
+  // made a quoteBox variable to select the element with an ID of 'quote-box' and make it dynamic. Then, I used the variable to set the inner HTML to the contents of HTMLString
+  let quoteBox = document.getElementById('quote-box')
+  quoteBox.innerHTML = htmlString
+
+}
+printQuote()
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
  ***/
 
-// document.getElementById('load-quote').addEventListener("click", printQuote, false);
-
-//test
-// console.log(quotes);
-console.log("im alive and breathing!");
+document.getElementById('load-quote').addEventListener("click", printQuote, false)
