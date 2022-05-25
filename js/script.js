@@ -13,27 +13,28 @@ let quotes = [
     source: " Allen Saunders",
     citation: "Readers Digest",
     year: "1957",
+    tags:['life', ' lifestyle', ' mindfulness']
   },
   {
     quote: "Strive not to be a success, but rather to be of value.",
     source: "Albert Einstein",
     citation: "LIFE MAGAZINE",
     year: "1955",
-    tags: ["business", "life", "maturity"],
+    tags: ["business", " life", " maturity"],
   },
   {
     quote: "You miss 100% of the shots you don’t take.",
     source: "Wayne Gretzky",
     citation: "AARP Taxes 69: 717",
     year: "1969",
-    tags: ["business", "life", "sports"],
+    tags: ["business", " life", " sports"],
   },
   {
     quote:
       "There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.",
     source: "Gilbert Fowler",
     year: "1940",
-    tags: ["business", "life", "gratitude"],
+    tags: ["business", " life", " gratitude"],
   },
   {
     quote:
@@ -41,12 +42,12 @@ let quotes = [
     source: "Bill Keane",
     citation: "The Family Circus newspaper cartoon",
     year: "1994",
-    tags: ["life", "gratitude"],
+    tags: ["life", " gratitude"],
   },
   {
     quote: "You cant unring a doorbell",
     source: "Ancient Proverb",
-    tags: ["business", "life", "opportunity"],
+    tags: ["business", " life", " opportunity"],
   },
 ];
 
@@ -119,7 +120,7 @@ const randomColor = () => {
   return color;
 };
 randomColor();
-
+//randomColor() is applied as a background when users clicks the "Show Another Button" button
 loadBtn.addEventListener("click", () => {
 body.style.background = randomColor();
 });
