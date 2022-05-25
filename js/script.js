@@ -59,7 +59,7 @@ let loadBtn = document.getElementById("load-quote");
  * generates a random number between zero and the last index in the `quotes` array
  * @return {object} a random object from the quotes array.
  ***/
-let getRandomQuote = () => {
+const getRandomQuote = () => {
   // generates a random number between zero and the last index in the `quotes` array
   let randomNumber = Math.floor(Math.random() * quotes.length);
   // grabs a random object from the `quotes` array
@@ -74,9 +74,7 @@ getRandomQuote();
  ***/
 // randomQuote calls the getRandomQuote() function and prints to the page. Depending on the quote properties, it will edit the text to show the quote in proper format.
 const printQuote = () => {
-  const randomQuote = getRandomQuote(quotes);
-  console.log( randomQuote, randomQuote.citation, randomQuote.source, randomQuote.year
-  );
+  const randomQuote = getRandomQuote();
 
   //Instead of if statement, I used JS ternary operators to add to and format the HTML string
   //if randomQuote has a 'citation' or 'year' property exists, it adds additional HTML and class names to the existing interpolation and a closed the statement with a '<p>' tag.
@@ -103,7 +101,6 @@ const printQuote = () => {
   // quoteBox variable selects the element with an ID of 'quote-box' and make it dynamic. Then, I used the variable to set the inner HTML to the contents of HTMLString
   let quoteBox = document.getElementById("quote-box");
   quoteBox.innerHTML = htmlString;
-  console.log(htmlString);
 };
 printQuote();
 
@@ -130,14 +127,14 @@ body.style.background = randomColor();
  ***/
 //interval() calls the printQuote()  function and to display a different quote and assigns a random color to the screen every 10 seconds
 
-let interval = () => {
+const interval = () => {
   return setInterval(() => {
     printQuote()
       body.style.background = randomColor();
   }, 10000);
 }
 // reset function allows the interval timer to reset when the "Show Another Button" button is clicked. The 10 seconds start over anytime the button is clicked. 
-let reset = () => {
+const reset = () => {
   clearInterval(int);
   int = interval()
 }
